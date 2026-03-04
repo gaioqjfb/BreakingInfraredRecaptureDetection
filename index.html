@@ -1,15 +1,172 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <!-- page content -->
-    <p>
-      TEST PAGE
-    </p>
-  </body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+
+<head>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+
+<script type="text/javascript" src="../js/hidebib.js"></script>
+
+<!-- Breaking Infrared Recapture Detection: 
+     Optical-Synthesis Attacks and Depth-Aware In-Sensor Countermeasures -->
+<head>
+    <title>Breaking Infrared Recapture Detection</title>
+    <meta property="og:description" content="Breaking Infrared Recapture Detection: Optical-Synthesis Attacks and Depth-Aware In-Sensor Countermeasures"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="flex-row">
+        <div class="paper-title text-center">
+            <h1 style="color:rgb(71, 132, 216); font-size:80px;"><strong>Breaking Infrared Recapture Detection</strong></h1>
+        </div>
+        <div class="paper-title text-center">
+            <h1 style="color:rgb(71, 132, 216);"><strong>Optical-Synthesis Attacks and Depth-Aware In-Sensor Countermeasures</strong></h1>
+        </div>        
+          
+    </div>
+    
+    <div class="boxed">
+        <div class="flex-row">
+            <p> 
+                We propose SynthIR that bypasses two-sensor-based recapture detection methods (e.g. Scoop) by independently controlling the views of an RGB camera and an infrared (IR) depth sensor, including LiDAR, using a new optical synthesis with a hot mirror, an inexpensive optical element that is transparent to visible light but is reflective to IR light. 
+                Such sensor-based detection assumes that the image and the depth of the scene are inseparable, and this paper identifies a new vulnerability that enables an attacker to control the two components independently. The key observation is that the image and depth sensors .
+                <br>
+                Adressing the issue, we propose a new defense that captures the RGB image and the depth inseparably using the same optical spectrum and within the same sensor.
+            </p>
+    
+            <div class="image-container">
+                <img class="scale_img" src="img/fig1.png" style="max-width: 100%; height: auto; display: block; margin: auto;">
+            </div>
+            <br>
+    
+            
+        </div>
+    
+        <br>
+        For artifacts, recaptured images and fake depth to bypass the depth-based recapture detection injected through our attack, and scripts for our defense methodology are available at <a href="https://zenodo.org/records/18857584?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjkxY2MwMWM3LWZhNTgtNDZlOC1hYWUyLTQ3NTEwMTU2Njc0NiIsImRhdGEiOnt9LCJyYW5kb20iOiJiYjRhZTg2MDhlNGEwMGZjYWU3ZjgwNTkyMDM1NDM5ZSJ9.mip8ztoBlBXFHIu3FRy3LfJj_HfFUgDO8chvust8PjtT1wAbu1eDeQu3iNKTpoSJOmvcLB3d9cwltqy7G95qaw">Zenodo</a>.
+        <br><br>
+    
+
+    </div>
+
+    <section id="image-first">
+        <h2>Demonstration of the Image-First Approach</h2>
+        <hr>
+
+        <!-- Description -->
+        <div class="content-block">
+            <p>
+                We create an object for the deepfake image by cutting the cardboard in the shape of the subject (person portrait) in the scene. A pair of an image and its corresponding cardboard object is illustrated in setup figure with the monitor showing the image and the hot mirror redirecting the IR light towards the cardboard. The monitor position and hot mirror position are fixed using a monitor mount and a tripod.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="image-group">
+            <figure>
+                <img class="section-img" src="img/Image_first_setup.png" alt="setup for image-first">
+                <figcaption>
+                    Setup for image-first approach.
+                </figcaption>
+            </figure>
+            <figure>
+                <img class="section-img" src="img/Image_first.jpg" alt="result for image-first">
+                <figcaption>
+                    Result for image-first approach.
+                </figcaption>
+            </figure>
+        </div>
+
+        <!-- Results -->
+        <div class="content-block">
+            <p>
+                Results of the image-first approach with simple recapture of a monitor (top), and the proposed attack (bottom). RGB Image and ToF Depth are the outputs of a camera and a depth sensor, respectively. Depth is the depth map estimated from RGB Image. Scoop Output shows the camera output while detected region are highlighted with red color. 
+                <br>
+                In the simple recapture setting in the result figure(top), ToF Depth shows the flat surface of the monitor, and Scoop Output is entirely red, i.e., the all region is detected as suspicious. With the proposed method in the figure (bottom), the ToF Depth sees the shape of the cardboard object, and Scoop recognizes the RGB Depth and ToF Depth similar, and no region is detected in Scoop Output.
+            </p>
+        </div>
+    </section>
+
+    <section id="image-first">
+        <h2>Demonstration of the Depth-First Approach</h2>
+        <hr>
+
+        <!-- Description -->
+        <div class="content-block">
+            <p>
+                Our depth-first approach uses publicly available tools and consists of two main steps: (i) building a real scene using cardboard shapes or a mannequin, (ii) generating an image portrait to display in the monitor based on the real scene depth map, and (iii) modifying the image to achieve the attacker's desired deepfake.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="image-group">
+            <figure>
+                <img class="section-img" src="img/image_generateion_setup.png" alt="setup for depth-first">
+                <figcaption>
+                    Setup for the depth-first approach.
+                </figcaption>
+            </figure>
+            <figure>
+                <img class="section-img" src="img/depth_first_results.jpg" alt="result for depth-first">
+                <figcaption>
+                    Result for the depth-first approach.
+                </figcaption>
+            </figure>
+        </div>
+
+        <!-- Results -->
+        <div class="content-block">
+            <p>
+                The rows represent (i) the original face images in the dataset, (ii) the generated images, (iii) depth maps from the depth sensor (ToF Depth), (iv) depth maps estimated from the RGB image (RGB Depth), and (v) the final Scoop output. The figures for ToF Depth show that the silhouettes of the people and the microphones are modified from the original scene in setup figure (right) because of the sensor fusion. As a result, Scoop fails to detect the recapturing, showing no red region in the final output. The results verify the effectiveness of the depth-first approach of our proposed attack.
+            </p>
+        </div>
+    </section>
+
+    
+    <section id="video">
+        <h2>Demonstration of the Attack to Video</h2>
+        <hr>
+        <div class="attack-demo">
+            <div class="video-container">
+                <figure>
+                    <video controls>
+                        <source src="video/Depth.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Fake Depth</figcaption>
+                </figure>
+            </div>
+    
+            <div class="video-container">
+                <figure>
+                    <video controls>
+                        <source src="video/Scoop_result.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Result of Scoop</figcaption>
+                </figure>
+            </div>
+            <p>
+                We show that the attack can be extended to videos by generating a video of a person talking with facial animation, which consistently bypasses depth-based a recapture detctor over 318 frames or 10 seconds. 
+                <br>
+                The left video shows the injected fake depth and consistency for all frames, which makes the attack successfull over all frames, as shown in the right video (i.e, Scoop detects no suspicious region in all frames).
+
+            </p>
+        </div>
+    </section>
+    
+
+
+</body>
 </html>
