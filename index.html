@@ -140,15 +140,31 @@
         <h2>Demonstration of the Attack to Video</h2>
         <hr>
         <div class="attack-demo">
+                        <div class="video-container">
+                <figure>
+                    <video controls>
+                        <source src="video/original.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Generated Video</figcaption>
+                </figure>
+            </div>
             <div class="video-container">
                 <figure>
                     <video controls>
                         <source src="video/Depth.mp4" type="video/mp4">
                     </video>
-                    <figcaption>Fake Depth</figcaption>
+                    <figcaption>ToF Depth</figcaption>
                 </figure>
             </div>
-    
+            
+            <div class="video-container">
+                <figure>
+                    <video controls>
+                        <source src="video/Depth_RGB.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>RGB Depth</figcaption>
+                </figure>
+            </div>
             <div class="video-container">
                 <figure>
                     <video controls>
@@ -161,7 +177,6 @@
                 We show that the attack can be extended to videos by generating a video of a person talking with facial animation, which consistently bypasses depth-based a recapture detctor over 318 frames or 10 seconds. 
                 <br>
                 The left video shows the injected fake depth and consistency for all frames, which makes the attack successfull over all frames, as shown in the right video (i.e, Scoop detects no suspicious region in all frames).
-
             </p>
         </div>
     </section>
